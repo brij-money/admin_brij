@@ -17,7 +17,7 @@
                     <MazInput v-model="password"  color="warning"  v-bind="passwordAttrs" :hint="errors.password" :error="errors.password !== undefined" label="password" type="password" />
 
                     <!-- remember me -->
-                    <MazCheckbox v-model="rememberMe" size="xs" color="warning" label="Remember me" />
+                    <MazCheckbox v-model="rememberMe" size="xs" color="warning" class="dark:text-white" label="Remember me" />
                     <!-- btn -->
                     <MazBtn color="warning" @click="onSubmit">Log in</MazBtn>
 

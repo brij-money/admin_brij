@@ -6,7 +6,7 @@
             <h3 class="w-fit text-base md:text-base">Dashboard Overview</h3>
             <div
                 class="flex w-fit justify-center gap-x-3 items-center -- bg-white dark:bg-slate-900  dark:bg-opacity-50  p-2 ring-1 dark:ring-1 ring-slate-900/5 dark:ring-slate-900 rounded-sm">
-                <Icon name="solar:graph-broken" />
+                <Icon class="dark:text-white" name="solar:graph-broken" />
                 <p class="text-sm">30k merchant</p>
                 <img src="/assets/img/ghana.svg" alt="flag">
             </div>
@@ -24,13 +24,19 @@
         </div>
 
         <!-- recent transaction, merchant, whitelisted -->
-        <div class="flex lg:flex-row flex-col w-full lg:px-8 px-4 gap-x-1 mt-3">
-            <div class="flex flex-col lg:w-full w-full">
+        <div class="flex lg:flex-row justify-between flex-col w-full lg:px-8 px-4 gap-3 mt-3">
+            <div class="flex flex-col lg:w-[70%] w-full gap-3">
+                <!-- Recent Transaction -->
+                <OverviewAreaChart/>
                 <!-- Recent Transaction -->
                 <OverviewRecentTransactions/>
             </div>
-            <div class="flex flex-col lg:w-2/5 w-full">
-            
+            <div class="flex flex-col lg:w-[30%] w-full gap-3">
+                <!-- Recent join merchants -->
+                <OverviewRecentMerchants/>
+                <!-- recent whitelist & Disabled account -->
+                <OverviewRecentWhitelistDisabledMerchants />
+                
             </div>
         </div>
 
@@ -61,7 +67,7 @@ const cardInfoList = reactive([
         icon: 'majesticons:coins-line',
         title: 'Charges transaction',
         value: 'GHS 5000.00',
-        color:'text-violet-700'
+        color:'text-blue-700'
     }
 ])
 

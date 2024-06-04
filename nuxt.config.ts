@@ -10,6 +10,10 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'nuxt-icon'
   ],
+    // other configurations...
+    plugins: [
+      '~/plugins/apexcharts.client.ts'
+    ],
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
     fallback: 'light', // fallback value if not system preference found

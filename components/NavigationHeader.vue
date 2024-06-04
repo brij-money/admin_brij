@@ -15,7 +15,7 @@
         <div class="flex">
             <!-- user profile dropdown -->
             <div class="flex ring-1 ring-slate-900/5 dark:ring-1 dark:ring-slate-700 rounded-lg">
-                <MazDropdown :items="[
+                <MazDropdown class="dark:text-white" :items="[
                     { label: 'Profile', action: () => { } },
                     { label: 'Settings', action: () => { } },
                 ]">
@@ -31,7 +31,7 @@
 
             </div>
             <!-- theme toggle -->
-            <MazDropdown :items="[
+            <MazDropdown class="dark:text-white" :items="[
                 { label: 'Light', action: () => colorMode.preference = 'light' },
                 { label: 'Dark', action: () => colorMode.preference = 'dark' },
             ]">
@@ -60,7 +60,7 @@
                     <nav class="mt-4">
                         <ul>
                             <li v-for="item in menuItems" :key="item.id">
-                                <nuxt-link :to="item.url" @click.native="selectMenuItem(item)"
+                                <nuxt-link  :to="item.url" @click.native="selectMenuItem(item)"
                                     :class="['flex items-center justify-start ', selectedItem?.id === item.id ? 'active-menu' : '']"
                                     class="flex items-center gap-2 justify-start hover:text-amber-500 mx-6 rounded-md py-2  mb-1 menu-item">
                                     <i class="mr-2" :class="item.icon"></i>

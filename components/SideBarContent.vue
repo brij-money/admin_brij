@@ -55,6 +55,7 @@ function selectMenuItem(item: Menu) {
 
 .menu-item {
     font-size: 16px;
+    color: white;
 }
 
 .menu-item:hover {

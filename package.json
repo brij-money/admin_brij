@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@vee-validate/yup": "^4.12.8",
+    "apexcharts": "^3.49.1",
     "maz-ui": "^3.43.4",
     "nuxt": "^3.11.2",
     "vee-validate": "^4.12.8",
     "vue": "^3.4.27",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vue3-apexcharts": "^1.5.3"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^3.4.1",
