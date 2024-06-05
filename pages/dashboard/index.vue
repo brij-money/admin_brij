@@ -17,7 +17,7 @@
             <div v-for="(card, index) in cardInfoList" :key="index" class="div gap-x-7 flex flex-col gap-y-2  lg:w-1/4 w-1/2 -- bg-white dark:bg-slate-900  dark:bg-opacity-50  p-5 ring-1 dark:ring-1 ring-slate-900/5 dark:ring-slate-900 rounded-sm">
                 <div :class="[card.color]" class="flex flex-col  sm:flex-row-reverse lg:items-center sm:justify-between w-full gap-3">
                     <Icon class="text-xl" :name="card.icon" />
-                    <p style="font-weight: 800;" >{{ card.title }}</p>
+                    <h3>{{ card.title }}</h3>
                 </div>
                 <h2 >{{ card.value }}</h2>
             </div>
@@ -27,15 +27,15 @@
         <div class="flex lg:flex-row justify-between flex-col w-full lg:px-8 px-4 gap-3 mt-3">
             <div class="flex flex-col lg:w-[70%] w-full gap-3">
                 <!-- Recent Transaction -->
-                <OverviewAreaChart/>
+                <AreaChart/>
                 <!-- Recent Transaction -->
-                <OverviewRecentTransactions/>
+                <RecentTransactions/>
             </div>
             <div class="flex flex-col lg:w-[30%] w-full gap-3">
                 <!-- Recent join merchants -->
-                <OverviewRecentMerchants/>
+                <RecentMerchants/>
                 <!-- recent whitelist & Disabled account -->
-                <OverviewRecentWhitelistDisabledMerchants />
+                <RecentWhitelistDisabledMerchants />
                 
             </div>
         </div>

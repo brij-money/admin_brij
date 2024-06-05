@@ -32,9 +32,9 @@
                             </div>
 
                             <div class="flex flex-wrap w-[70%] flex-col justify-start">
-                                <p style="font-weight: 800;"
+                                <h3
                                     class="w-[90%] overflow-hidden whitespace-nowrap text-ellipsis">Orange
-                                    Tech Limitedsdssdsd ddddssds </p>
+                                    Tech Limitedsdssdsd ddddssds </h3>
                                 <p class="text-sm text-slate-500">@Jordan Anthony - 12/22/2024</p>
                             </div>
                         </div>
@@ -67,9 +67,9 @@
                             </div>
 
                             <div class="flex flex-wrap w-[70%] flex-col justify-start">
-                                <p style="font-weight: 800;"
+                                <h3
                                     class="w-[90%] overflow-hidden whitespace-nowrap text-ellipsis">Orange
-                                    Tech Limitedsdssdsd ddddssds </p>
+                                    Tech Limitedsdssdsd ddddssds </h3>
                                 <p class="text-sm text-slate-500">@Jordan Anthony - 12/22/2024</p>
                             </div>
                         </div>
