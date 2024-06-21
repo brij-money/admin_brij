@@ -32,12 +32,12 @@ import type { Menu } from '~/type';
 const selectedItem = ref<Menu | null>(null)
 
 const menuItems = reactive<Menu[]>([
-    { id: 1, label: 'Dashboard', icon: 'akar-icons:dashboard', url: '' },
-    { id: 2, label: 'Merchant', icon: 'solar:users-group-rounded-broken', url: '/dashboard/overview' },
-    { id: 3, label: 'Transactions', icon: 'bitcoin-icons:transactions-filled', url: '/dashboard/overview' },
-    { id: 4, label: 'Whitelisted Merchants', icon: 'tabler:users-minus', url: '/dashboard/overview' },
-    { id: 5, label: 'Disabled merchants', icon: 'streamline:interface-user-delete-actions-close-delete-deny-fail-geometric-human-person-remove-single-up-user', url: '/dashboard/overview' },
-    { id: 6, label: 'User management', icon: 'solar:users-group-two-rounded-line-duotone', url: '/dashboard/overview' },
+    // { id: 1, label: 'Dashboard', icon: 'akar-icons:dashboard', url: '/dashboard' },
+    { id: 2, label: 'Merchant', icon: 'solar:users-group-rounded-broken', url: '/dashboard/merchants' },
+    // { id: 3, label: 'Transactions', icon: 'bitcoin-icons:transactions-filled', url: '/dashboard/overview' },
+    // { id: 4, label: 'Whitelisted Merchants', icon: 'tabler:users-minus', url: '/dashboard/overview' },
+    // { id: 5, label: 'Disabled merchants', icon: 'streamline:interface-user-delete-actions-close-delete-deny-fail-geometric-human-person-remove-single-up-user', url: '/dashboard/overview' },
+    // { id: 6, label: 'User management', icon: 'solar:users-group-two-rounded-line-duotone', url: '/dashboard/overview' },
 ])
 
 function selectMenuItem(item: Menu) {
