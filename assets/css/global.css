@@ -5,11 +5,11 @@
   --danger-red: #f42424;
   --base-yellow: #f9ab10;
   --smooth-grey: #767171;
-  --font-primary-light: NunitoSans-Light;
-  --font-primary: NunitoSans-Regular;
-  --font-primary-md: NunitoSans-Medium;
-  --font-primary-bold: NunitoSans-Bold;
-  --font-primary-md-bold: NunitoSans-ExtraBold;
+  --font-primary-light: 300;
+  --font-primary: 400;
+  --font-primary-md: 500;
+  --font-primary-bold: 700;
+  --font-primary-md-bold: 800;
 }
 
 .section {
@@ -21,92 +21,57 @@
 }
 
 @font-face {
-  font-family: 'NunitoSans-ExtraLight';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-ExtraLight.ttf');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NunitoSans-ExtraLightItalic';
-  src: url('../fonts/NunitoSans/NunitoSans-ExtraBoldItalic.ttf');
-  font-weight: 200;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'NunitoSans-Light';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-Light.ttf');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NunitoSans-Regular';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-Regular.ttf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NunitoSans-Medium';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-Medium.ttf');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NunitoSans-MediumItalic';
-  src: url('../fonts/NunitoSans/NunitoSans-MediumItalic.ttf');
-  font-weight: 500;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'NunitoSans-SemiBold';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-SemiBold.ttf');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NunitoSans-SemiBoldItalic';
-  src: url('../fonts/NunitoSans/NunitoSans-SemiBoldItalic.ttf');
-  font-weight: 600;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'NunitoSans-Bold';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-Bold.ttf');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NunitoSans-BoldItalic';
-  src: url('../fonts/NunitoSans/NunitoSans-BoldItalic.ttf');
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'NunitoSans-ExtraBold';
+  font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-ExtraBold.ttf');
   font-weight: 800;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'NunitoSans-ExtraBoldItalic';
-  src: url('../fonts/NunitoSans/NunitoSans-ExtraBoldItalic.ttf');
-  font-weight: 800;
-  font-style: italic;
-}
-
 body {
   min-height: 100%;
-  font-family: 'NunitoSans-Regular', Helvetica, Arial, sans-serif;
+  font-family: 'NunitoSans', Helvetica, Arial, sans-serif;
   background-color: #fcfcfd;
   color: #18181e;
   margin: 0;
@@ -115,7 +80,6 @@ body {
 
 .dark body {
   background-color: #09090b;
-  color: #ebf4f1;
 }
 
 .sepia body {
@@ -123,16 +87,32 @@ body {
   color: #433422;
 }
 
+.sidebar {
+  background-color: var(--color-primary);
+}
+
 h2 {
   font-size: 24px;
-  font-weight: 800;
+  font-weight: var(--font-primary-bold);
+}
+
+.dark h2 {
+  color: #fff;
 }
 
 h3 {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: var(--font-primary-md);
 }
 
-p {
-  font-size: 16px;
+.dark h3 {
+  color: #fff;
+}
+
+.p-bold {
+  font-weight: var(--font-primary-bold);
+}
+
+.dark p {
+  color: #fff;
 }

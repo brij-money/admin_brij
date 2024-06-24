@@ -1,0 +1,55 @@
+<template>
+    <Box
+        class="p-2 rounded-sm">
+        <!-- header -->
+        <div class="flex justify-between px-2  py-4 items-center w-full flex-wrap">
+            <h3 class="w-fit text-base md:text-base">Recent Merchants</h3>
+            <MazLink color="theme">
+                <p>View all</p>
+                <Icon name="ic:sharp-arrow-forward" />
+            </MazLink>
+        </div>
+
+        <!-- list -->
+        <div v-for=" (merchant, index) in 5" :key="index"
+            class=" w-full bg-slate-50 flex justify-between items-center gap-x-3 mb-1 dark:bg-slate-950  dark:bg-opacity-50  p-3 ring-1 dark:ring-1 ring-slate-900/5 dark:ring-slate-900 rounded-sm">
+
+            <div class="flex gap-x-3 w-[70%]">
+                <div v-if="colorMode.preference === 'dark'"
+                    class="flex justify-center items-center w-12 h-12 ring-1 dark:ring-1 ring-slate-900/5 dark:ring-slate-900 rounded-sm">
+                    <img width="28" src="/assets/img/merchant-white.svg" alt="icon">
+
+                </div>
+                <div v-else
+                    class="flex justify-center items-center w-12 h-12 ring-1 dark:ring-1 ring-slate-900/5 dark:ring-slate-900 rounded-sm">
+                    <img width="28" src="/assets/img/merchant-black.svg" alt="icon">
+                </div>
+
+                <div class="flex flex-wrap w-[70%] flex-col justify-start">
+                    <h3 class="w-[90%] overflow-hidden whitespace-nowrap text-ellipsis">Orange
+                        Tech Limitedsdssdsd ddddssds </h3>
+                    <p class="text-sm text-slate-500">@Jordan Anthony - 12/22/2024</p>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-x-3 w-[25%]">
+                <MazDropdown class="dark:text-white" :items="[
+                    { label: 'View profile', action: () => { } },
+                    { label: 'View transactions', action: () => { } },
+                ]">
+                    More
+                </MazDropdown>
+            </div>
+
+        </div>
+
+    </Box>
+</template>
+<script setup lang="ts">
+
+// theme handler
+const colorMode = useColorMode()
+console.log(colorMode.preference)
+console.log(colorMode)
+</script>
+<style></style>
