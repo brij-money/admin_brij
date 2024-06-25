@@ -11,12 +11,14 @@ export default defineNuxtConfig({
     'maz-ui/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
-    'nuxt-icon'
+    'nuxt-icon',
+    "@sidebase/nuxt-auth"
   ],
-    // other configurations...
-    plugins: [
-      '~/plugins/apexcharts.client.ts'
-    ],
+
+  plugins: [
+    '~/plugins/apexcharts.client.ts'
+  ],
+
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
     fallback: 'light', // fallback value if not system preference found
@@ -26,5 +28,20 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '',
     storageKey: 'nuxt-color-mode'
+  },
+
+  auth: {
+    baseURL: '/api/auth',
+    provider: {
+      type: 'local',
+      endpoints: {
+        signIn: { path: '/login', method: 'post' },
+        signOut: { path: '/logout', method: 'post' },
+        signUp: { path: '/register', method: 'post' },
+        getSession: { path: '/session', method: 'get' }
+      },
+      token: { signInResponseTokenPointer: '/token/accessToken' },
+    }
+
   }
 })

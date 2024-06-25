@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@sidebase/nuxt-auth": "^0.7.2",
     "@vee-validate/yup": "^4.12.8",
     "apexcharts": "^3.49.1",
     "maz-ui": "^3.43.4",
