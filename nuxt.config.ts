@@ -1,12 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3000/api/v2'
+    }
+  },
+
   components: [
     { path: '~/components', pathPrefix: false }
   ],
+
   css: [
     '~/assets/css/global.css'  // Path to your CSS file
   ],
+
   modules: [
     'maz-ui/nuxt',
     '@nuxtjs/tailwindcss',
@@ -31,17 +40,15 @@ export default defineNuxtConfig({
   },
 
   auth: {
-    baseURL: '/api/auth',
+    baseURL: process.env.API_BASE_URL || 'http://localhost:3000/api',
     provider: {
       type: 'local',
       endpoints: {
-        signIn: { path: '/login', method: 'post' },
+        signIn: { path: '/login/admin', method: 'post' },
         signOut: { path: '/logout', method: 'post' },
-        signUp: { path: '/register', method: 'post' },
         getSession: { path: '/session', method: 'get' }
       },
       token: { signInResponseTokenPointer: '/token/accessToken' },
     }
-
   }
 })
