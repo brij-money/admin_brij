@@ -40,7 +40,7 @@
               label="Remember me"
             />
             <!-- btn -->
-            <MazBtn color="warning" @click="onSubmit">Log in</MazBtn>
+            <MazBtn color="warning" :loading="btnLoading" @click="onSubmit">Log in</MazBtn>
           </div>
         </form>
       </div>
@@ -59,9 +59,16 @@
 </template>
 <script lang="ts" setup>
 import { useForm } from 'vee-validate';
+import {getMerchant} from '~/repository/module/merchant'
 import * as yup from 'yup';
 
-const { signIn, data } = useAuth();
+
+const { signIn} = useAuth();
+
+
+
+// datas
+const btnLoading = ref(false)
 
 // Define the validation schema
 const { errors, handleSubmit, defineField } = useForm({
@@ -78,15 +85,40 @@ const [email, emailAttrs] = defineField('email');
 const [password, passwordAttrs] = defineField('password');
 const rememberMe = ref(false);
 
+
+
 // Creates a submission handler
 const onSubmit = handleSubmit(async values => {
   console.log(values);
-  try {
-    await signIn(values);
-  } catch (e) {
-    console.log(e);
-  }
+  logIn(values)
 });
+
+
+async function logIn(values:any){
+  try {
+    btnLoading.value = true;
+      await signIn(values, {callbackUrl:'/dashboard/merchants'});
+    btnLoading.value = false;
+
+    ShowMessage('You have successfully sign into your dashboard', false)
+  } catch (e:any) {
+    btnLoading.value = false;
+
+    ShowMessage(e.response._data.message, true)
+    console.log(e.response._data.message);
+  }
+}
+
+function $toast(arg0: string, arg1: { position: string; duration: number; type: string; }) {
+  throw new Error('Function not implemented.');
+}
+
+definePageMeta({
+    auth:{
+      unauthenticated:true,
+      navigateAuthenticatedTo:'/dashboard/merchants'
+    }
+})
 </script>
 <style scoped>
 .main {

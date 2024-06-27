@@ -8,26 +8,30 @@
                 </MazBtn>
             </div>
 
-            <h3  class="font-black text-base lg:text-lg ">Dashboard</h3>
+            <h3 class="font-black text-base lg:text-lg ">Dashboard</h3>
         </div>
+
 
 
         <div class="flex">
             <!-- user profile dropdown -->
-            <div class="flex ring-1 ring-slate-900/5 dark:ring-1 dark:ring-slate-700 rounded-lg">
-                <MazDropdown class="dark:text-white" :items="[
-                    { label: 'Profile', action: () => { } },
-                    { label: 'Settings', action: () => { } },
-                ]">
-                    <div class="flex h-3 flex-row items-center justify-center gap-x-4">
-                        <Icon class="text-lg" name="ph:user-bold" />
-                        <div class="lg:flex flex-col justify-start items-start hidden ">
-                            <p>admin@gmail.com</p>
-                            <p class="text-xs">Admin</p>
+            <div class="flex ring-1 ring-slate-900/5 dark:ring-1 dark:ring-slate-700 rounded-lg p-0">
+                <MazDropdown trigger="click">
+                    <div class="flex gap-x-3 mr-3">
+                        <Icon class="text-2xl" name="solar:user-broken"/>
+                        <div class="flex flex-col items-start">
+                            <p class="p-0 m-0">{{ admin.data.firstname }} {{ admin.data.lastname }}</p>
+                            <small class="text-gray-400">{{ admin.data.email }}</small>
                         </div>
                     </div>
-
+                    <template #dropdown>
+                        <div class="flex flex-col items-start">
+                            <MazBtn color="transparent"> Account Settings </MazBtn>
+                            <MazBtn color="transparent" @click="logout"> Logout </MazBtn>
+                        </div>
+                    </template>
                 </MazDropdown>
+
 
             </div>
             <!-- theme toggle -->
@@ -60,7 +64,7 @@
                     <nav class="mt-4">
                         <ul>
                             <li v-for="item in menuItems" :key="item.id">
-                                <nuxt-link  :to="item.url" @click.native="selectMenuItem(item)"
+                                <nuxt-link :to="item.url" @click.native="selectMenuItem(item)"
                                     :class="['flex items-center justify-start ', selectedItem?.id === item.id ? 'active-menu' : '']"
                                     class="flex items-center gap-2 justify-start hover:text-amber-500 mx-6 rounded-md py-2  mb-1 menu-item">
                                     <i class="mr-2" :class="item.icon"></i>
@@ -78,17 +82,22 @@
 </template>
 
 <script setup lang="ts">
-import type { Menu } from '~/type';
+import type { Admin, Menu } from '~/type';
 
 // theme handler
 const colorMode = useColorMode()
 console.log(colorMode.preference)
-
-
+const {data } = useAuth();
+const router = useRouter();
+const adminInfo = ref<Admin | any>()
 // drawer toggler
 const isOpenedTop = ref(false)
 
 
+const admin =  computed(() => {
+    adminInfo.value = data.value;
+    return adminInfo.value;
+})
 // menus
 const selectedItem = ref<Menu | null>(null)
 
@@ -106,15 +115,20 @@ function selectMenuItem(item: Menu) {
     isOpenedTop.value = false
     navigateTo(item.url.toString())
 }
+
+
+function logout() {
+    signOut()
+}
 </script>
 
 <style scoped>
-.drawer{
+.drawer {
     height: 100%;
 }
 
-.logo-area{
-    background-color:var(--color-primary);
+.logo-area {
+    background-color: var(--color-primary);
 
 }
 
@@ -122,5 +136,4 @@ function selectMenuItem(item: Menu) {
     background-color: #0F454C;
     color: var(--base-yellow);
 }
-
 </style>

@@ -28,7 +28,7 @@
 
         </div>
 
-
+        <pre>{{ merchantListResponse?.data }} ddd</pre>
 
         <!-- filter dialog -->
         <MazDialog v-model="filterDialog">
@@ -42,39 +42,40 @@
     </Box>
     <!-- table -->
     <Box class="m-5">
-        <MazTable class="dark:text-white dark:bg-slate-950 bg-white " hoverable size="sm"
+        <MazTable :loading="isMerchantLoading" class="dark:text-white dark:bg-slate-950 bg-white " hoverable size="sm"
             :headers="['NAME', 'MERCHANT ID', 'EMAIL', 'DATE', 'STATUS', 'COUNTRY', 'ACTION']">
-            <MazTableRow v-for="(tx, index) in 15" :key="index" search class="dark:bg-slate-950 bg-white">
+            <MazTableRow v-for="(merchant, index) in merchantListResponse?.data" :key="index" search
+                class="dark:bg-slate-950 bg-white">
                 <MazTableCell>
                     <div class="flex gap-3 items-center">
                         <div class="flex justify-center items-center p-3 brounded-full">
                             <Icon class="text-xl" name="mdi:storefront-outline" />
                         </div>
                         <div class="flex flex-col">
-                            <p class="p-bold">Orange Merchant</p>
-                            <small>@Jacob Manson</small>
+                            <p class="p-bold">{{ merchant.business_name }}</p>
+                            <small>@{{ merchant.first_name }} {{ merchant.last_name }}</small>
                         </div>
                     </div>
                 </MazTableCell>
                 <MazTableCell>
-                    <p>28847384883</p>
+                    <p>{{ merchant.merchant_id }}</p>
                 </MazTableCell>
                 <MazTableCell>
-                    <p>jacobmanson@gmail.com</p>
+                    <p>{{ merchant.business_email }}</p>
                 </MazTableCell>
                 <MazTableCell>
-                    <p>12/02/2024</p>
+                    <p>{{ merchant.created_at }}</p>
                 </MazTableCell>
                 <MazTableCell>
-                    <MazBadge key="success" color="success" pastel>
-                        Success
+                    <MazBadge key="success" color="theme" pastel>
+                        {{ merchant.status }}
                     </MazBadge>
                 </MazTableCell>
                 <MazTableCell>
-                    Ghana
+                    {{ merchant.country_name }}
                 </MazTableCell>
 
-<!-- 
+                <!-- 
                 <MazDropdown  :items="[
                     { label: 'View transactions', href: 'https://www.google.com', target: '_blank' },
                     { label: 'View merchant account', href: 'https://www.google.com', target: '_blank' },
@@ -82,7 +83,7 @@
                     { label: 'Whitelist account', href: 'https://www.google.com', target: '_blank' },
                     { label: 'Disable account',  to: { name: 'index' } },
                 ]"> -->
-                <MazDropdown  :items="[
+                <MazDropdown :items="[
                     { label: 'View merchant Info', action: () => viewMerchantDetails(), target: '_blank' },
                 ]">
                     <MazTableCell>
@@ -109,12 +110,16 @@
 </template>
 <script setup lang="ts">
 import MazPagination, { type Props } from 'maz-ui/components/MazPagination'
+import type { MerchantsResponse } from '~/type';
+const { $api } = useNuxtApp()
 
 const search = ref('')
 const filterDialog = ref(false)
 const exportDialog = ref(false)
 const currentPage = ref(1)
 const isMerchantDetailsOpen = ref(false)
+const isMerchantLoading = ref(false);
+const merchantListResponse = ref<MerchantsResponse>()
 
 const foo: Props = {
     resultsSize: 100,
@@ -122,11 +127,29 @@ const foo: Props = {
     activeColor: 'warning',
 }
 
-function viewMerchantDetails(){
+function viewMerchantDetails() {
     isMerchantDetailsOpen.value = true;
 }
+
+
+async function getMerchants() {
+
+    try {
+        isMerchantLoading.value = true;
+        // await $api.merchant.getMerchants()
+            isMerchantLoading.value = false;
+    } catch (e: any) {
+        isMerchantLoading.value = false;
+
+        ShowMessage(e.response._data.message, true)
+        console.log(e)
+
+    }
+
+}
 definePageMeta({
-    layout: 'dashboard'
+    layout: 'dashboard',
+    middleware: 'auth'
 })
 </script>
 <style></style>
