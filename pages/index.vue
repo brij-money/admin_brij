@@ -59,7 +59,6 @@
 </template>
 <script lang="ts" setup>
 import { useForm } from 'vee-validate';
-import {getMerchant} from '~/repository/module/merchant'
 import * as yup from 'yup';
 
 

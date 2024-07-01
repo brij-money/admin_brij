@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr:false,
   devtools: { enabled: true },
-
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3000/api/v2'
@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'nuxt-icon',
     "@sidebase/nuxt-auth",
+    '@vueuse/nuxt'
   ],
 
 

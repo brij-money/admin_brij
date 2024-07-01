@@ -798,6 +798,32 @@
     unimport "^3.7.1"
     untyped "^1.4.2"
 
+"@nuxt/kit@^3.12.1":
+  version "3.12.2"
+  resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.12.2.tgz"
+  integrity sha512-5kOqEzfc3FsAncjK2je7vuq4/QsR5ypViTnop52mlFLf0Ku1NMCrWCSWYowAh4P0yqTACMAZYa+HdRZHscU84g==
+  dependencies:
+    "@nuxt/schema" "3.12.2"
+    c12 "^1.11.1"
+    consola "^3.2.3"
+    defu "^6.1.4"
+    destr "^2.0.3"
+    globby "^14.0.1"
+    hash-sum "^2.0.0"
+    ignore "^5.3.1"
+    jiti "^1.21.6"
+    klona "^2.0.6"
+    knitwork "^1.1.0"
+    mlly "^1.7.1"
+    pathe "^1.1.2"
+    pkg-types "^1.1.1"
+    scule "^1.3.0"
+    semver "^7.6.2"
+    ufo "^1.5.3"
+    unctx "^2.3.1"
+    unimport "^3.7.2"
+    untyped "^1.4.2"
+
 "@nuxt/schema@^3.11.2", "@nuxt/schema@3.11.2":
   version "3.11.2"
   resolved "https://registry.npmjs.org/@nuxt/schema/-/schema-3.11.2.tgz"
@@ -813,6 +839,24 @@
     std-env "^3.7.0"
     ufo "^1.5.3"
     unimport "^3.7.1"
+    untyped "^1.4.2"
+
+"@nuxt/schema@3.12.2":
+  version "3.12.2"
+  resolved "https://registry.npmjs.org/@nuxt/schema/-/schema-3.12.2.tgz"
+  integrity sha512-IRBuOEPOIe1CANKnO2OUiqZ1Hp/0htPkLaigK7WT6ef/SdIFZUd68Tqqejqy2AFrbgU9G80k3U7eg2XUdaiQlQ==
+  dependencies:
+    compatx "^0.1.8"
+    consola "^3.2.3"
+    defu "^6.1.4"
+    hookable "^5.5.3"
+    pathe "^1.1.2"
+    pkg-types "^1.1.1"
+    scule "^1.3.0"
+    std-env "^3.7.0"
+    ufo "^1.5.3"
+    uncrypto "^0.1.3"
+    unimport "^3.7.2"
     untyped "^1.4.2"
 
 "@nuxt/telemetry@^2.5.3":
@@ -1760,7 +1804,17 @@
     "@vueuse/shared" "10.9.0"
     vue-demi ">=0.14.7"
 
-"@vueuse/core@^10.9.0", "@vueuse/core@10.9.0":
+"@vueuse/core@^10.11.0", "@vueuse/core@^10.9.0", "@vueuse/core@10.11.0":
+  version "10.11.0"
+  resolved "https://registry.npmjs.org/@vueuse/core/-/core-10.11.0.tgz"
+  integrity sha512-x3sD4Mkm7PJ+pcq3HX8PLPBadXCAlSDR/waK87dz0gQE+qJnaaFhc/dZVfJz+IUYzTMVGum2QlR7ImiJQN4s6g==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.20"
+    "@vueuse/metadata" "10.11.0"
+    "@vueuse/shared" "10.11.0"
+    vue-demi ">=0.14.8"
+
+"@vueuse/core@10.9.0":
   version "10.9.0"
   resolved "https://registry.npmjs.org/@vueuse/core/-/core-10.9.0.tgz"
   integrity sha512-/1vjTol8SXnx6xewDEKfS0Ra//ncg4Hb0DaZiwKf7drgfMsKFExQ+FnnENcN6efPen+1kIzhLQoGSy0eDUVOMg==
@@ -1779,10 +1833,33 @@
     "@vueuse/shared" "10.9.0"
     vue-demi ">=0.14.7"
 
+"@vueuse/metadata@10.11.0":
+  version "10.11.0"
+  resolved "https://registry.npmjs.org/@vueuse/metadata/-/metadata-10.11.0.tgz"
+  integrity sha512-kQX7l6l8dVWNqlqyN3ePW3KmjCQO3ZMgXuBMddIu83CmucrsBfXlH+JoviYyRBws/yLTQO8g3Pbw+bdIoVm4oQ==
+
 "@vueuse/metadata@10.9.0":
   version "10.9.0"
   resolved "https://registry.npmjs.org/@vueuse/metadata/-/metadata-10.9.0.tgz"
   integrity sha512-iddNbg3yZM0X7qFY2sAotomgdHK7YJ6sKUvQqbvwnf7TmaVPxS4EJydcNsVejNdS8iWCtDk+fYXr7E32nyTnGA==
+
+"@vueuse/nuxt@^10.11.0":
+  version "10.11.0"
+  resolved "https://registry.npmjs.org/@vueuse/nuxt/-/nuxt-10.11.0.tgz"
+  integrity sha512-PV15CU28qzr/+4IleyahobwU9kfTwfbsl8f+wkv6TWjboFVdt4WLMP2TNfPj7QgssyDdCRdl3gLZ4DC884wnDw==
+  dependencies:
+    "@nuxt/kit" "^3.12.1"
+    "@vueuse/core" "10.11.0"
+    "@vueuse/metadata" "10.11.0"
+    local-pkg "^0.5.0"
+    vue-demi ">=0.14.8"
+
+"@vueuse/shared@10.11.0":
+  version "10.11.0"
+  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-10.11.0.tgz"
+  integrity sha512-fyNoIXEq3PfX1L3NkNhtVQUSRtqYwJtJg+Bp9rIzculIZWHTkKSysujrOk2J+NrRulLTQH9+3gGSfYLWSEWU1A==
+  dependencies:
+    vue-demi ">=0.14.8"
 
 "@vueuse/shared@10.9.0":
   version "10.9.0"
@@ -1826,7 +1903,7 @@ acorn-import-attributes@^1.9.2:
   resolved "https://registry.npmjs.org/acorn-import-attributes/-/acorn-import-attributes-1.9.5.tgz"
   integrity sha512-n02Vykv5uA3eHGM/Z2dQrcD56kL8TyDb2p1+0P83PClMnC/nc+anbQRhIOWnSq4Ke/KvDPrY3C9hDtC/A3eHnQ==
 
-acorn@^8, acorn@^8.10.0, acorn@^8.11.2, acorn@^8.11.3, acorn@^8.6.0, acorn@^8.8.2, acorn@8.11.3:
+acorn@^8, acorn@^8.11.3, acorn@^8.6.0, acorn@^8.8.2, acorn@8.11.3:
   version "8.11.3"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.11.3.tgz"
   integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
@@ -2160,23 +2237,23 @@ busboy@1.6.0:
   dependencies:
     streamsearch "^1.1.0"
 
-c12@^1.10.0:
-  version "1.10.0"
-  resolved "https://registry.npmjs.org/c12/-/c12-1.10.0.tgz"
-  integrity sha512-0SsG7UDhoRWcuSvKWHaXmu5uNjDCDN3nkQLRL4Q42IlFy+ze58FcCoI3uPwINXinkz7ZinbhEgyzYFw9u9ZV8g==
+c12@^1.10.0, c12@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.npmjs.org/c12/-/c12-1.11.1.tgz"
+  integrity sha512-KDU0TvSvVdaYcQKQ6iPHATGz/7p/KiVjPg4vQrB6Jg/wX9R0yl5RZxWm9IoZqaIHD2+6PZd81+KMGwRr/lRIUg==
   dependencies:
     chokidar "^3.6.0"
-    confbox "^0.1.3"
+    confbox "^0.1.7"
     defu "^6.1.4"
     dotenv "^16.4.5"
-    giget "^1.2.1"
-    jiti "^1.21.0"
-    mlly "^1.6.1"
+    giget "^1.2.3"
+    jiti "^1.21.6"
+    mlly "^1.7.1"
     ohash "^1.1.3"
     pathe "^1.1.2"
     perfect-debounce "^1.0.0"
-    pkg-types "^1.0.3"
-    rc9 "^2.1.1"
+    pkg-types "^1.1.1"
+    rc9 "^2.1.2"
 
 cac@^6.7.14:
   version "6.7.14"
@@ -2418,6 +2495,11 @@ commondir@^1.0.1:
   resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
 
+compatx@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.npmjs.org/compatx/-/compatx-0.1.8.tgz"
+  integrity sha512-jcbsEAR81Bt5s1qOFymBufmCbXCXbk0Ql+K5ouj6gCyx2yHlu6AgmGIi9HxfKixpUDO5bCFJUHQ5uM6ecbTebw==
+
 compress-commons@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/compress-commons/-/compress-commons-6.0.2.tgz"
@@ -2434,7 +2516,7 @@ concat-map@0.0.1:
   resolved "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-confbox@^0.1.3, confbox@^0.1.7:
+confbox@^0.1.7:
   version "0.1.7"
   resolved "https://registry.npmjs.org/confbox/-/confbox-0.1.7.tgz"
   integrity sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==
@@ -3214,7 +3296,7 @@ get-stream@^8.0.1:
   resolved "https://registry.npmjs.org/get-stream/-/get-stream-8.0.1.tgz"
   integrity sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==
 
-giget@^1.2.1:
+giget@^1.2.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/giget/-/giget-1.2.3.tgz"
   integrity sha512-8EHPljDvs7qKykr6uw8b+lqLiUc/vUg+KVTI0uND4s63TdsZM2Xus3mflvF0DDG9SiM4RlCkFGL+7aAjRmV7KA==
@@ -3862,10 +3944,10 @@ jackspeak@^3.1.2:
   optionalDependencies:
     "@pkgjs/parseargs" "^0.11.0"
 
-jiti@^1.21.0:
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/jiti/-/jiti-1.21.0.tgz"
-  integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
+jiti@^1.21.0, jiti@^1.21.6:
+  version "1.21.6"
+  resolved "https://registry.npmjs.org/jiti/-/jiti-1.21.6.tgz"
+  integrity sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==
 
 jose@^4.11.4, jose@^4.15.5:
   version "4.15.7"
@@ -4161,7 +4243,7 @@ magic-string-ast@^0.5.0:
   dependencies:
     magic-string "^0.30.9"
 
-magic-string@^0.30.0, magic-string@^0.30.10, magic-string@^0.30.3, magic-string@^0.30.4, magic-string@^0.30.5, magic-string@^0.30.8, magic-string@^0.30.9:
+magic-string@^0.30.0, magic-string@^0.30.10, magic-string@^0.30.3, magic-string@^0.30.4, magic-string@^0.30.8, magic-string@^0.30.9:
   version "0.30.10"
   resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.30.10.tgz"
   integrity sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==
@@ -4432,14 +4514,14 @@ mkdirp@^1.0.3:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mlly@^1.3.0, mlly@^1.4.2, mlly@^1.6.1, mlly@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.npmjs.org/mlly/-/mlly-1.7.0.tgz"
-  integrity sha512-U9SDaXGEREBYQgfejV97coK0UL1r+qnF2SyO9A3qcI8MzKnsIFKHNVEkrDyNncQTKQQumsasmeq84eNMdBfsNQ==
+mlly@^1.3.0, mlly@^1.4.2, mlly@^1.6.1, mlly@^1.7.0, mlly@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.npmjs.org/mlly/-/mlly-1.7.1.tgz"
+  integrity sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==
   dependencies:
     acorn "^8.11.3"
     pathe "^1.1.2"
-    pkg-types "^1.1.0"
+    pkg-types "^1.1.1"
     ufo "^1.5.3"
 
 mri@^1.2.0:
@@ -4807,7 +4889,7 @@ nuxt-icon@^0.6.10:
     "@nuxt/devtools-kit" "^1.1.1"
     "@nuxt/kit" "^3.11.1"
 
-nuxt@^3.11.2, nuxt@^3.4.0, nuxt@^3.9.0:
+nuxt@^3.0.0, nuxt@^3.11.2, nuxt@^3.4.0, nuxt@^3.9.0:
   version "3.11.2"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.11.2.tgz"
   integrity sha512-Be1d4oyFo60pdF+diBolYDcfNemoMYM3R8PDjhnGrs/w3xJoDH1YMUVWHXXY8WhSmYZI7dyBehx/6kTfGFliVA==
@@ -5547,7 +5629,7 @@ range-parser@~1.2.1:
   resolved "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-rc9@^2.1.1, rc9@^2.1.2:
+rc9@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/rc9/-/rc9-2.1.2.tgz"
   integrity sha512-btXCnMmRIBINM2LDZoEmOogIZU7Qe7zn4BpomSKZ/ykbLObuBdvG+mFq11DL6fjH1DRwHhrlgtYWG96bJiC7Cg==
@@ -5778,7 +5860,7 @@ scheduler@^0.23.2:
   dependencies:
     loose-envify "^1.1.0"
 
-scule@^1.0.0, scule@^1.1.1, scule@^1.2.0, scule@^1.3.0:
+scule@^1.0.0, scule@^1.2.0, scule@^1.3.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/scule/-/scule-1.3.0.tgz"
   integrity sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==
@@ -6149,13 +6231,6 @@ strip-final-newline@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/strip-final-newline/-/strip-final-newline-3.0.0.tgz"
   integrity sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==
-
-strip-literal@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/strip-literal/-/strip-literal-1.3.0.tgz"
-  integrity sha512-PugKzOsyXpArk0yWmUwqOZecSO0GH0bPoctLcqNDH9J04pVW3lflYE0ujElBGTloevcxF5MofAOZ7C5l2b+wLg==
-  dependencies:
-    acorn "^8.10.0"
 
 strip-literal@^2.1.0:
   version "2.1.0"
@@ -6562,24 +6637,24 @@ unicorn-magic@^0.1.0:
   resolved "https://registry.npmjs.org/unicorn-magic/-/unicorn-magic-0.1.0.tgz"
   integrity sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==
 
-unimport@^3.7.1:
-  version "3.7.1"
-  resolved "https://registry.npmjs.org/unimport/-/unimport-3.7.1.tgz"
-  integrity sha512-V9HpXYfsZye5bPPYUgs0Otn3ODS1mDUciaBlXljI4C2fTwfFpvFZRywmlOu943puN9sncxROMZhsZCjNXEpzEQ==
+unimport@^3.7.1, unimport@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.npmjs.org/unimport/-/unimport-3.7.2.tgz"
+  integrity sha512-91mxcZTadgXyj3lFWmrGT8GyoRHWuE5fqPOjg5RVtF6vj+OfM5G6WCzXjuYtSgELE5ggB34RY4oiCSEP8I3AHw==
   dependencies:
     "@rollup/pluginutils" "^5.1.0"
-    acorn "^8.11.2"
+    acorn "^8.11.3"
     escape-string-regexp "^5.0.0"
     estree-walker "^3.0.3"
     fast-glob "^3.3.2"
     local-pkg "^0.5.0"
-    magic-string "^0.30.5"
-    mlly "^1.4.2"
-    pathe "^1.1.1"
-    pkg-types "^1.0.3"
-    scule "^1.1.1"
-    strip-literal "^1.3.0"
-    unplugin "^1.5.1"
+    magic-string "^0.30.10"
+    mlly "^1.7.0"
+    pathe "^1.1.2"
+    pkg-types "^1.1.1"
+    scule "^1.3.0"
+    strip-literal "^2.1.0"
+    unplugin "^1.10.1"
 
 unique-filename@^3.0.0:
   version "3.0.0"
@@ -6661,7 +6736,7 @@ unplugin-vue-router@^0.7.0:
     unplugin "^1.5.0"
     yaml "^2.3.2"
 
-unplugin@^1.10.0, unplugin@^1.10.1, unplugin@^1.3.1, unplugin@^1.4.0, unplugin@^1.5.0, unplugin@^1.5.1:
+unplugin@^1.10.0, unplugin@^1.10.1, unplugin@^1.3.1, unplugin@^1.4.0, unplugin@^1.5.0:
   version "1.10.1"
   resolved "https://registry.npmjs.org/unplugin/-/unplugin-1.10.1.tgz"
   integrity sha512-d6Mhq8RJeGA8UfKCu54Um4lFA0eSaRa3XxdAJg8tIdxbu1ubW0hBCZUL7yI2uGyYCRndvbK8FLHzqy2XKfeMsg==
@@ -6908,6 +6983,11 @@ vue-demi@>=0.14.7:
   version "0.14.7"
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.7.tgz"
   integrity sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==
+
+vue-demi@>=0.14.8:
+  version "0.14.8"
+  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.8.tgz"
+  integrity sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==
 
 vue-devtools-stub@^0.1.0:
   version "0.1.0"

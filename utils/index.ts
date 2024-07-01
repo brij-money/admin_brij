@@ -31,3 +31,21 @@ export function signOut() {
   deleteCookie("auth.token"); // Adjust the cookie name if different
   window.location.reload();
 }
+
+export function formatDate(date: Date) {
+  const formatted = useDateFormat(date, "Do MMM, YYYY, HH:mm:ss AA");
+  return formatted.value;
+}
+
+// composables/useClipboard.js
+export const copyToClipboard = async (text:string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    ShowMessage('Text copied successfully', false)
+  } catch (error) {
+    console.error('Failed to copy: ', error);
+    ShowMessage('Failed to copy text', false)
+
+  }
+}
+

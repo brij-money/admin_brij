@@ -1,9 +1,9 @@
 <template>
-    <Box class="flex justify-between items-center  p-2 m-5 rounded-sm">
+    <MazLoadingBar v-if="isMerchantDocsLoading" color="warning" />
+    <Box class="flex justify-between items-center p-2 m-5 rounded-sm flex-wrap gap-y-2">
         <h3 class="w-fit text-base md:text-base">Dashboard Overview</h3>
         <!-- actions -->
         <div class="flex gap-x-3">
-
             <!-- search -->
             <MazInput color="warning" label="" placeholder="Search merchant by name, email etc" v-model="search"
                 autocomplete="off">
@@ -14,21 +14,18 @@
 
             <!-- fiter -->
             <div @click="filterDialog = true"
-                class="ring-1 flex items-center px-3 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-md cursor-pointer  gap-x-3 ring-slate-200 dark:ring-slate-800">
+                class="ring-1 flex items-center px-3 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-md cursor-pointer gap-x-3 ring-slate-200 dark:ring-slate-800">
                 <p>Filter</p>
                 <Icon class="text-center text-black dark:text-white" name="ri:filter-line" />
             </div>
 
             <!-- export -->
             <div @click="exportDialog = true"
-                class="ring-1 flex items-center px-3 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-md cursor-pointer  gap-x-3 ring-slate-200 dark:ring-slate-800">
+                class="ring-1 flex items-center px-3 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-md cursor-pointer gap-x-3 ring-slate-200 dark:ring-slate-800">
                 <p>Export</p>
                 <Icon class="text-center text-black dark:text-white" name="prime:file-export" />
             </div>
-
         </div>
-
-        <pre>{{ merchantListResponse?.data }} ddd</pre>
 
         <!-- filter dialog -->
         <MazDialog v-model="filterDialog">
@@ -42,8 +39,17 @@
     </Box>
     <!-- table -->
     <Box class="m-5">
-        <MazTable :loading="isMerchantLoading" class="dark:text-white dark:bg-slate-950 bg-white " hoverable size="sm"
-            :headers="['NAME', 'MERCHANT ID', 'EMAIL', 'DATE', 'STATUS', 'COUNTRY', 'ACTION']">
+        <MazTable :loading="isMerchantLoading" color="warning" class="dark:text-white dark:bg-slate-950 bg-white" hoverable size="sm"
+            :headers="[
+                'NAME',
+                'MERCHANT ID',
+                'EMAIL',
+                'DATE',
+                'STATUS',
+                'APPROVED',
+                'COUNTRY',
+                'ACTION',
+            ]">
             <MazTableRow v-for="(merchant, index) in merchantListResponse?.data" :key="index" search
                 class="dark:bg-slate-950 bg-white">
                 <MazTableCell>
@@ -64,7 +70,7 @@
                     <p>{{ merchant.business_email }}</p>
                 </MazTableCell>
                 <MazTableCell>
-                    <p>{{ merchant.created_at }}</p>
+                    <p>{{ formatDate(merchant.created_at) }}</p>
                 </MazTableCell>
                 <MazTableCell>
                     <MazBadge key="success" color="theme" pastel>
@@ -72,84 +78,149 @@
                     </MazBadge>
                 </MazTableCell>
                 <MazTableCell>
+                    <MazBadge v-if="merchant.onboarding_stage > 5" key="success" color="success" pastel>
+                        Approved
+                    </MazBadge>
+                    <MazBadge v-else color="theme" pastel> Not approved </MazBadge>
+                </MazTableCell>
+                <MazTableCell>
                     {{ merchant.country_name }}
                 </MazTableCell>
-
-                <!-- 
-                <MazDropdown  :items="[
-                    { label: 'View transactions', href: 'https://www.google.com', target: '_blank' },
-                    { label: 'View merchant account', href: 'https://www.google.com', target: '_blank' },
-                    { label: 'View merchant Info', action: () => viewMerchantDetails(), target: '_blank' },
-                    { label: 'Whitelist account', href: 'https://www.google.com', target: '_blank' },
-                    { label: 'Disable account',  to: { name: 'index' } },
-                ]"> -->
-                <MazDropdown :items="[
-                    { label: 'View merchant Info', action: () => viewMerchantDetails(), target: '_blank' },
+                <MazDropdown  trigger="click" :items="[
+                    {
+                        label: 'View merchant Info',
+                        action: () => showMerchantDetail(merchant),
+                        target: '_blank',
+                    },
                 ]">
-                    <MazTableCell>
-                        Action
-                    </MazTableCell>
+                    <MazTableCell> Action </MazTableCell>
                 </MazDropdown>
             </MazTableRow>
-
-
-
         </MazTable>
     </Box>
 
     <div class="flex p-5 w-full justify-center">
-        <MazPagination v-bind="foo" v-model="currentPage" size="sm" />
+        <MazPagination v-bind="foo" v-model="currentPage" @update:model-value="handleCurrentChange"
+             :results-size="merchantListResponse?.pagination.total" size="sm" />
     </div>
 
     <!-- view merchant details dialog -->
 
-    <MazDialog v-model="isMerchantDetailsOpen" width="1000px" title="Merchant Information" max-height="95vh" scrollable>
-        <MerchantDetails />
+    <MazDialog v-model="isMerchantDetailsOpen" width="1000px" title="Merchant Information" max-height="95vh" :before-close="handleClose" scrollable>
+        <MerchantDetails v-if="isMerchantDetailsOpen" :merchant-docs="merchantDocs" :merchant="merchant" @on-successful="onSuccessful()" />
     </MazDialog>
-
 </template>
 <script setup lang="ts">
-import MazPagination, { type Props } from 'maz-ui/components/MazPagination'
-import type { MerchantsResponse } from '~/type';
-const { $api } = useNuxtApp()
+import MazPagination, { type Props } from "maz-ui/components/MazPagination";
+import type { Merchant, DocsData, MerchantsResponse, MerchantDocResponse } from "~/type";
+const config = useRuntimeConfig();
+const baseUrl = config.public.apiBaseUrl;
+const { token } = useAuth();
 
-const search = ref('')
-const filterDialog = ref(false)
-const exportDialog = ref(false)
-const currentPage = ref(1)
-const isMerchantDetailsOpen = ref(false)
+const search = ref("");
+const filterDialog = ref(false);
+const exportDialog = ref(false);
+const currentPage = ref(1);
+const isMerchantDetailsOpen = ref(false);
 const isMerchantLoading = ref(false);
-const merchantListResponse = ref<MerchantsResponse>()
-
+const isMerchantDocsLoading = ref(false);
+const merchantDocs = ref<DocsData>()
+const merchant = ref<Merchant>()
+const params = ref({
+    // limit: 30,
+    page: 1,
+});
+const merchantListResponse = ref<MerchantsResponse>();
 const foo: Props = {
     resultsSize: 100,
     totalPages: 10,
-    activeColor: 'warning',
-}
+    activeColor: "warning",
+};
 
-function viewMerchantDetails() {
+onMounted(() => {
+    getMerchants();
+});
+
+ 
+
+// function formatDate(date: Date) {
+//     const formatted = useDateFormat(date, "Do MMM, YYYY, HH:mm:ss AA");
+//     return formatted.value;
+// }
+
+async function showMerchantDetail(selected_merchant:Merchant){
+    await getMerchantDocs(selected_merchant.merchant_id?.toString()!)
+    merchant.value = selected_merchant
     isMerchantDetailsOpen.value = true;
+    console.log(selected_merchant.merchant_id)
 }
 
+function handleClose(){
+    console.log('closed')
+    isMerchantDetailsOpen.value = false;
+    merchantDocs.value = undefined;
+    merchant.value = undefined;
+}
 
 async function getMerchants() {
-
     try {
         isMerchantLoading.value = true;
-        // await $api.merchant.getMerchants()
-            isMerchantLoading.value = false;
+        const res = await $fetch<MerchantsResponse>(`${baseUrl}/admin/merchants`, {
+            headers: {
+                Authorization: `Bearer ${token.value}`,
+                Accept: "application/json",
+            },
+            params: params.value,
+        });
+
+        console.log(res);
+        merchantListResponse.value = res;
+        isMerchantLoading.value = false;
     } catch (e: any) {
         isMerchantLoading.value = false;
-
-        ShowMessage(e.response._data.message, true)
-        console.log(e)
-
+        ShowMessage(e.response._data.message, true);
+        console.log(e);
     }
+}
 
+
+async function getMerchantDocs(merchant_id: string) {
+
+    try {
+        isMerchantDocsLoading.value = true;
+        const res = await $fetch<MerchantDocResponse>(`${baseUrl}/admin/merchants/get-compliance-documents/${merchant_id}`, {
+            headers: {
+                Authorization: `Bearer ${token.value}`,
+                Accept: "application/json",
+            },
+        });
+
+        console.log(res);
+        merchantDocs.value = res.data
+        isMerchantDocsLoading.value = false;
+
+    } catch (e: any) {
+        isMerchantDocsLoading.value = false;
+        ShowMessage(e.response._data.message, true);
+        console.log(e);
+    }
+}
+
+function handleCurrentChange(page: number) {
+    console.log(currentPage.value)
+    currentPage.value = page;
+    params.value.page = page;
+    getMerchants();
+}
+
+
+function onSuccessful(){
+    getMerchants();
+    isMerchantDetailsOpen.value = false;
 }
 definePageMeta({
-    layout: 'dashboard',
-    middleware: 'auth'
-})
+    layout: "dashboard",
+    middleware: "auth",
+});
 </script>
 <style></style>
